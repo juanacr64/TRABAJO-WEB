@@ -1,135 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabajo Número 1 - Desarrollo Web</title>
-  <style>
-    /* 1. VARIABLES CSS (:root) */
-    :root {
-      --bg-dark: #001f24;
-      --bg-active: #ffffff;
-      --text-dark: #001f24;
-      --text-light: #ffffff;
-      --accent-color: #00bcd4;
-      --font-family: Arial, Helvetica, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Número 2 - Desarrollo Web Responsive</title>
+    <style>
+        /* 1. VARIABLES CSS (:root) */
+        :root {
+            --bg-oscuro: #001f24;
+            --bg-activo: #ffffff;
+            --texto-oscuro: #001f24;
+            --luz-texto: #ffffff;
+            --color-acento: #00bcd4;
+            --familia-fuentes: Arial, Helvetica, sans-serif;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: var(--font-family);
-      background-color: #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+        body {
+            font-family: var(--familia-fuentes);
+            background-color: var(--bg-oscuro);
+            color: var(--luz-texto);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    /* MENÚ DE NAVEGACIÓN */
-    nav {
-      width: 100%;
-      max-width: 900px;
-      background-color: var(--bg-dark);
-      margin-top: 20px;
-    }
+        /* NAVEGACIÓN Y PSEUDO-CLASES */
+        nav {
+            background-color: var(--bg-oscuro);
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
+        ul.menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
 
-    nav li {
-      flex: 1;
-    }
+        ul.menu li a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--luz-texto);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-    nav a {
-      display: block;
-      text-align: center;
-      padding: 12px 0;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
-    }
+        /* Pseudo-clase :first-child para destacar 'Inicio' */
+        ul.menu li:first-child a {
+            background-color: #e2e2cb;
+            color: var(--texto-oscuro);
+        }
 
-    /* PSEUDO-CLASES CSS */
-    /* Pestaña activa (primera opción por defecto) */
-    nav li:first-child a {
-      background-color: var(--bg-active);
-      color: var(--text-dark);
-    }
+        /* Pseudo-clases :hover y :not() */
+        ul.menu li:not(:first-child) a:hover {
+            background-color: var(--color-acento);
+            color: var(--texto-oscuro);
+        }
 
-    /* Resto de pestañas no activas */
-    nav li:not(:first-child) a {
-      color: var(--text-light);
-    }
+        /* CONTENIDO PRINCIPAL */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
 
-    /* Efecto al pasar el cursor (hover) */
-    nav li:not(:first-child) a:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      color: var(--accent-color);
-    }
+        .contenedor-imagen {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+        }
 
-    /* Efecto al hacer clic (active) */
-    nav a:active {
-      opacity: 0.8;
-    }
+        .contenedor-imagen img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
 
-    /* CONTENEDOR CENTRAL DE LA IMAGEN */
-    main {
-      width: 100%;
-      max-width: 900px;
-      background-color: #ffffff;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        /* 2. REESTRUCTURACIÓN RESPONSIVE CON MEDIA QUERIES */
+        @media (max-width: 768px) {
+            ul.menu {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
 
-    main img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+            ul.menu li {
+                width: 100%;
+                text-align: center;
+            }
 
-    /* PIE DE PÁGINA (FOOTER) */
-    footer {
-      width: 100%;
-      max-width: 900px;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      padding: 15px 20px;
-      font-size: 13px;
-    }
-  </style>
+            ul.menu li a {
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+
+        /* 3. PIE DE PÁGINA */
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- MENÚ -->
-  <nav>
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Productos</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="#">Acerca de</a></li>
-      <li><a href="#">Contáctanos</a></li>
-    </ul>
-  </nav>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- CONTENIDO CENTRAL CON IMAGEN -->
-  <main>
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhATERsDyPKqNvHHQnFSOcmjHumb0tfC-WZi0oOzfcx22VQ_Xm1Bz7kyFHa6g2byB97B2GLUF3T4evkc2xtVcQJHWxuCLSqhKcB7fHUq3obDdqLEeyKm21WJTL8jtkFIOmzvSjsxw/s1600/paisajes+naturales+-+naturaleza+-+natural+free+landscapes+-+fotos+de+paisajes+(2).jpg alt="Desarrollo Web e HTML5">
-  </main>
+    <main>
+        <h1>Diseño Adaptativo / Responsive</h1>
+        <div class="contenedor-imagen">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Imagen de fondo">
+        </div>
+    </main>
 
-  <!-- PIE DE PÁGINA -->
-  <footer>
-    <p>Elaborado por Juana Jamileth Cruz Aguirre</p>
-  </footer>
+    <footer>
+        <p>Elaborado por: <strong>Juana Jamileth Cruz Aguirre</strong></p>
+    </footer>
 
 </body>
 </html>
